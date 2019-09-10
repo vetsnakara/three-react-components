@@ -1,0 +1,17 @@
+body {
+  background-color: #eee;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.panel-heading {
+  cursor: pointer;
+}
+
+.panel-collapse {
+  overflow: hidden ;
+  transition: height .2s linear;
+}

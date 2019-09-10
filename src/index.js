@@ -3,8 +3,9 @@ import ReactDOM from "react-dom";
 
 import App from "./App";
 
-const title = "React with Webpack and Babel!!!";
+import "./styles.css";
 
-ReactDOM.render(<App title={title} />, document.querySelector("#app"));
+
+ReactDOM.render(<App />, document.querySelector("#app"));
 
 module.hot.accept();

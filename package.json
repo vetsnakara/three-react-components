@@ -20,6 +20,7 @@
   "homepage": "https://github.com/vetsnakara/minimal-react-webpack-babel-setup#readme",
   "devDependencies": {
     "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
@@ -28,8 +29,11 @@
     "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
+    "css-loader": "^3.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "style-loader": "^1.0.0"
   }
 }
