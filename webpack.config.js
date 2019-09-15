@@ -18,7 +18,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true
+            }
+          }
+        ]
       },
       {
         test: /\.(jpg|png|svg)$/,
@@ -30,8 +38,10 @@ module.exports = {
   plugins: [new webpack.HotModuleReplacementPlugin()],
 
   devServer: {
+    historyApiFallback: true,
     contentBase: "./public",
     open: true,
-    hot: true
+    hot: true,
+    overlay: true
   }
 };

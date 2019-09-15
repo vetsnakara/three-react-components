@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import classnames from "classnames";
 
+import styles from "./styles.css";
+
 class Collapsible extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired
@@ -35,23 +37,28 @@ class Collapsible extends React.Component {
     const { title, children } = this.props;
 
     const panelClasses = classnames(
-      "panel",
-      { "panel--expanded": isExpanded }
+      styles["panel"],
+      {
+        [styles["panel--expanded"]]: isExpanded
+      }
     );
 
     const currentHeight = isExpanded ? height : 0;
 
     return (
       <div className={panelClasses}>
-        <div className="panel-heading" onClick={this.handleToggle}>
+        <div
+          className={styles["panel-heading"]}
+          onClick={this.handleToggle}
+        >
           <h2>{title}</h2>
         </div>
         <div
-          className="panel-collapse"
+          className={styles["panel-collapse"]}
           style={{ height: currentHeight }}
         >
           <div
-            className="panel-body"
+            className={styles["panel-body"]}
             ref={this.bodyRef}
           >
             {children}

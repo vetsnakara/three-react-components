@@ -1,0 +1,17 @@
+.panel {
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.panel-heading {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.panel-body {
+  padding: 15px;
+}
+
+.panel-collapse {
+  overflow: hidden ;
+  transition: height .2s linear;
+}
