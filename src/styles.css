@@ -1,17 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
 body {
+  margin: 0;
+  padding: 50px 0 0;
+  height: 100%;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 14px;
   background-color: #eee;
 }
 
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 30px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+header img {
+  max-width: 120px;
+}
+
+#app {
+  height: 100%;
+}
+
 .container {
-  max-width: 400px;
+  width: 40%;
+  min-width: 320px;
+  height: 100%;
   margin: 0 auto;
+  padding: 0 15px;
+}
+
+.content {
+  background-color: #fff;
+  border-radius: 7px;
+  padding: 20px;
+  box-shadow: 1px 1px 4px rgba(0,0,0,.2);
+}
+
+.panel {
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.panel-group {
+  margin-bottom: 20px;
 }
 
 .panel-heading {
+  padding: 10px 15px;
   cursor: pointer;
+}
+
+.panel-body {
+  padding: 15px;
 }
 
 .panel-collapse {
   overflow: hidden ;
   transition: height .2s linear;
+}
+
+@media (max-width: 992px) {
+  .container {
+    width: 100%;
+    max-width: 720px;
+  }
 }

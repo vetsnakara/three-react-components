@@ -8,26 +8,27 @@ class Collapsible extends React.Component {
   }
 
   state = {
-    isExpanded: true,
-    height: null
+    isExpanded: false,
+    height: 0
   }
 
-  collapsibleRef = React.createRef();
+  bodyRef = React.createRef();
 
   handleToggle = e => {
     e.preventDefault();
-    this.setState(prevState => ({
-      isExpanded: !prevState.isExpanded,
-    }))
-  }
+    this.setState(prevState => {
+      if (!prevState.isExpanded) {
+        return {
+          isExpanded: true,
+          height: this.bodyRef.current.clientHeight
+        }
+      }
 
-  componentDidMount() {
-    this.setState({
-      isExpanded: false,
-      height: this.collapsibleRef.current.clientHeight
-    })
+      return {
+        isExpanded: false
+      }
+    });
   }
-
 
   render() {
     const { isExpanded, height } = this.state;
@@ -48,9 +49,11 @@ class Collapsible extends React.Component {
         <div
           className="panel-collapse"
           style={{ height: currentHeight }}
-          ref={this.collapsibleRef}
         >
-          <div className="panel-body">
+          <div
+            className="panel-body"
+            ref={this.bodyRef}
+          >
             {children}
           </div>
         </div>
