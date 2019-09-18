@@ -1,0 +1,12 @@
+.loader {
+  background-color: #fff;
+  border-radius: 7px;
+  padding: 40px 0;
+  box-shadow: 1px 1px 4px rgba(0,0,0,.2);
+  text-align: center;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+}

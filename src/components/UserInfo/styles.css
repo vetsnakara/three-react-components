@@ -1,0 +1,13 @@
+.info-list {
+  margin: 0;
+  padding: 0;
+}
+
+.info-item {
+  list-style-type: none;
+  margin-bottom: 8px;
+}
+
+.icon {
+  margin-right: 5px;
+}

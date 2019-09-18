@@ -1,0 +1,20 @@
+.wrapper {
+  background-color: #fff;
+  border-radius: 7px;
+  padding: 40px 0;
+  box-shadow: 1px 1px 4px rgba(0,0,0,.2);
+  text-align: center;
+}
+
+.error-icon {
+  width: 80px;
+  height: 80px;
+}
+
+.error-message {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #f44336;
+}
+

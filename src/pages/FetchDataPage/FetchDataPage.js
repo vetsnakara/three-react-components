@@ -1,11 +1,14 @@
 import React from "react";
+
 import CollapsibleGroup from "../../components/CollapsibleGroup";
+import Page from "../../components/Page";
+import Loader from "../../components/Loader";
+import UserInfo from "../../components/UserInfo";
+import ErrorMessage from "../../components/ErrorMessage";
 import { getUsers } from "../../utils/api";
 
-import logo from "./images/fetch-data-logo.svg";
+import logoImg from "./images/fetch-data-logo.svg";
 import styles from "./styles.css";
-
-// todo: make a single fetch component from this (not page)
 
 class FetchDataPage extends React.Component {
   state = {
@@ -33,17 +36,19 @@ class FetchDataPage extends React.Component {
 
   fetchData = () => {
     this.setState({
-      isLoading: true
+      isLoading: true,
+      error: null,
+      users: []
     });
 
     getUsers()
       .then(users => {
         this.setState({
           users,
+          error: null,
           isLoading: false
         });
 
-        // save data in LS
         localStorage.setItem(
           "appData",
           JSON.stringify({
@@ -52,49 +57,48 @@ class FetchDataPage extends React.Component {
           })
         );
       })
-      .catch(error =>
-        this.setState({
-          error,
-          isLoading: false
-        })
-      );
+      .catch(error => this.setState({
+        error,
+        isLoading: false
+      }));
   };
 
   render() {
     const { isLoading, users, error } = this.state;
 
-    if (error) {
-      console.log(`${error}`);
-      return <p>Error occurs ...</p>;
-    }
-
-    if (isLoading) return <p>Loading ...</p>;
-
     return (
-      <div>
-        <header>
-          <img className={styles["logo"]} src={logo} />
-          <h1>Fetching Data</h1>
-        </header>
-        <main className={styles["content"]}>
-          <button
-            onClick={this.fetchData}
-          >
-            FETCH
-        </button>
-          <CollapsibleGroup>
-            {() => users.map(user => ({
-              title: user.name,
-              content: (
-                <div key={user.id}>
-                  <div>Username: {user.username}</div>
-                  <div>Email: {user.email}</div>
-                </div>
+      <Page>
+        {{
+          headerContent: [
+            <div className={styles["header-logo"]}>
+              <img src={logoImg} />
+            </div>,
+            <div className={styles["header-bottom"]}>
+              <h1 className={styles["title"]}>Fetching Data</h1>
+              <button
+                className={styles["fetch-button"]}
+                onClick={this.fetchData}
+                disabled={isLoading}
+              >
+                FETCH
+              </button>
+            </div>
+          ],
+          mainContent: [
+            <Loader isLoading={isLoading} />,
+            error
+              ? <ErrorMessage error={error} />
+              : (
+                <CollapsibleGroup>
+                  {users.map(user => ({
+                    title: user.name,
+                    content: <UserInfo key={user.id} user={user} />
+                  }))}
+                </CollapsibleGroup>
               )
-            }))}
-          </CollapsibleGroup>
-        </main>
-      </div>
+          ]
+        }}
+      </Page>
     );
   }
 }

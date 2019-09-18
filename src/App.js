@@ -3,9 +3,10 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink,
   Redirect
 } from "react-router-dom";
+
+import Navigation from "./components/Navigation";
 
 // pages
 import CollapsiblePage from "./pages/CollapsiblePage/index";
@@ -17,12 +18,7 @@ const App = () => (
   <Router>
     <div className={styles["container"]}>
       <header>
-        {/* extract to Nav component */}
-        <nav>
-          <NavLink to="/collapsible">Collapsible</NavLink>
-          <NavLink to="/fetch">Fetch Data</NavLink>
-          <NavLink to="/converter">Currency Converter</NavLink>
-        </nav>
+        <Navigation />
       </header>
       <main>
         <Switch>

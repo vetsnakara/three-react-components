@@ -1,10 +1,14 @@
-.content {
-  background-color: #fff;
-  border-radius: 7px;
-  padding: 20px;
-  box-shadow: 1px 1px 4px rgba(0,0,0,.2);
+.header-logo {
+  margin-bottom: 30px;
 }
 
-.logo {
-  max-width: 120px;
+.header-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.title {
+  margin-right: 10px;
 }
