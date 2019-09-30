@@ -89,12 +89,14 @@ class FetchDataPage extends React.Component {
             error
               ? <ErrorMessage error={error} />
               : (
-                <CollapsibleGroup>
-                  {users.map(user => ({
-                    title: user.name,
-                    content: <UserInfo key={user.id} user={user} />
-                  }))}
-                </CollapsibleGroup>
+                <div className={styles["container"]}>
+                  <CollapsibleGroup>
+                    {users.map(user => ({
+                      title: user.name,
+                      content: <UserInfo key={user.id} user={user} />
+                    }))}
+                  </CollapsibleGroup>
+                </div>
               )
           ]
         }}

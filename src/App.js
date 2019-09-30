@@ -11,23 +11,24 @@ import Navigation from "./components/Navigation";
 // pages
 import CollapsiblePage from "./pages/CollapsiblePage/index";
 import FetchDataPage from "./pages/FetchDataPage/index";
+import CurrencyConverterPage from "./pages/CurrencyConverterPage";
 
 import styles from "./App.css";
 
 const App = () => (
   <Router>
-    <div className={styles["container"]}>
-      <header>
-        <Navigation />
-      </header>
-      <main>
-        <Switch>
-          <Route path="/collapsible" component={CollapsiblePage} />
-          <Route path="/fetch" component={FetchDataPage} />
-          <Route render={() => <Redirect to="/collapsible" />} />
-        </Switch>
-      </main>
-    </div>
+    <header>
+      <Navigation />
+    </header>
+    <main>
+      <Switch>
+        <Redirect exact from="/" to="/collapsible" />
+        <Route path="/collapsible" component={CollapsiblePage} />
+        <Route path="/fetch" component={FetchDataPage} />
+        <Route path="/converter" component={CurrencyConverterPage} />
+        <Route render={() => <p>Page Not Found</p>} />
+      </Switch>
+    </main>
   </Router >
 );
 

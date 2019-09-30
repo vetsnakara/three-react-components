@@ -1,0 +1,21 @@
+.wrapper {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  font-size: 16px;
+}
+
+.input {
+  width: 0;
+  flex-grow: 1;
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.input-addon {
+  color: #555;
+  background-color: #eee;
+  padding: 6px 12px;
+}

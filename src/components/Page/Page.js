@@ -12,7 +12,7 @@ const Page = ({ children }) => {
       <main>
         {mainContent}
       </main>
-    </article>
+    </article >
   )
 };
 

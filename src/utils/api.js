@@ -1,3 +1,5 @@
+import currenciesData from "./currenciesData";
+
 const getUsers = () =>
   fetch('https://randomuser.me/api/?results=50&nat=us,dk,fr,gb')
     .then(res => res.json())
@@ -10,6 +12,17 @@ const getUsers = () =>
       }))
     });
 
+const getCurrencies = () =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      try {
+        resolve(currenciesData);
+      } catch (error) {
+        reject(error);
+      }
+    }, 1000);
+  });
+
 const getFullName = ({ first, last }) => {
   const firstName = upperFirst(first);
   const lastName = upperFirst(last);
@@ -19,4 +32,4 @@ const getFullName = ({ first, last }) => {
 const upperFirst = word => word[0].toUpperCase() + word.slice(1);
 
 
-export { getUsers };
+export { getUsers, getCurrencies };

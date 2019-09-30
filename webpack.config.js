@@ -1,10 +1,15 @@
-const webpack = require("webpack");
+const path = require("path");
+
+const CopyWebpakPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { HotModuleReplacementPlugin } = require("webpack");
 
 module.exports = {
   entry: "./src/index.js",
 
   output: {
-    path: __dirname + "./public",
+    path: path.resolve(__dirname, "./public"),
     publicPath: "/",
     filename: "bundle.js"
   },
@@ -23,7 +28,9 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              modules: true
+              modules: {
+                localIdentName: '[local]--[hash:base64]'
+              }
             }
           }
         ]
@@ -35,7 +42,20 @@ module.exports = {
     ]
   },
 
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: path.resolve(__dirname, "./src/index.html")
+    }),
+    new CopyWebpakPlugin([
+      {
+        from: "src/images",
+        to: path.resolve(__dirname, "./public/images")
+      }
+    ])
+  ],
 
   devServer: {
     historyApiFallback: true,
