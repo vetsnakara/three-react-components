@@ -10,16 +10,13 @@ import { getCurrencies } from "../../utils/api";
 import logoImg from "./images/fetch-data-logo.svg";
 import styles from "./styles.css";
 
-import {
-  DEFAULT_CURRENCY_FROM,
-  DEFAULT_CURRENCY_TO
-} from "../../constants";
+import { DEFAULT_CURRENCY_FROM, DEFAULT_CURRENCY_TO } from "../../constants";
 
 class CurrencyConverterPage extends React.Component {
   state = {
     currencies: [],
     isLoading: true,
-    error: null,
+    error: null
   };
 
   componentDidMount() {
@@ -46,40 +43,32 @@ class CurrencyConverterPage extends React.Component {
   }
 
   render() {
-    const {
-      isLoading,
-      error,
-      currencies
-    } = this.state;
+    const { isLoading, error, currencies } = this.state;
 
     return (
       <Page>
         {{
           headerContent: [
-            <div className={styles["header-logo"]}>
+            <div className={styles["header-logo"]} key="logo">
               <img src={logoImg} />
             </div>,
-            <div className={styles["header-bottom"]}>
+            <div className={styles["header-bottom"]} key="header-bottom">
               <h1 className={styles["title"]}>Currency Converter</h1>
             </div>
           ],
-          mainContent:
-            isLoading
-              ? <Loader isLoading={isLoading} />
-              : (
-                error
-                  ? <ErrorMessage error={error} />
-                  : (
-                    <div className={styles["container"]}>
-                      <CurrencyConverter
-                        currencies={currencies}
-                        codeFrom={DEFAULT_CURRENCY_FROM}
-                        codeTo={DEFAULT_CURRENCY_TO}
-                      />
-                    </div>
-                  )
-              )
-
+          mainContent: isLoading ? (
+            <Loader isLoading={isLoading} />
+          ) : error ? (
+            <ErrorMessage error={error} />
+          ) : (
+            <div className={styles["container"]}>
+              <CurrencyConverter
+                currencies={currencies}
+                codeFrom={DEFAULT_CURRENCY_FROM}
+                codeTo={DEFAULT_CURRENCY_TO}
+              />
+            </div>
+          )
         }}
       </Page>
     );

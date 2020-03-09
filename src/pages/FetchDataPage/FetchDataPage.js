@@ -26,7 +26,7 @@ class FetchDataPage extends React.Component {
     if (expires && expires >= Date.now()) {
       console.log(
         `Use local storage. Expires through ${(expires - Date.now()) /
-        1000} seconds.`
+          1000} seconds.`
       );
       return this.setState({ users });
     }
@@ -57,10 +57,12 @@ class FetchDataPage extends React.Component {
           })
         );
       })
-      .catch(error => this.setState({
-        error,
-        isLoading: false
-      }));
+      .catch(error =>
+        this.setState({
+          error,
+          isLoading: false
+        })
+      );
   };
 
   render() {
@@ -70,10 +72,10 @@ class FetchDataPage extends React.Component {
       <Page>
         {{
           headerContent: [
-            <div className={styles["header-logo"]}>
+            <div className={styles["header-logo"]} key="logo">
               <img src={logoImg} />
             </div>,
-            <div className={styles["header-bottom"]}>
+            <div className={styles["header-bottom"]} key="header-bottom">
               <h1 className={styles["title"]}>Fetching Data</h1>
               <button
                 className={styles["fetch-button"]}
@@ -85,19 +87,19 @@ class FetchDataPage extends React.Component {
             </div>
           ],
           mainContent: [
-            <Loader isLoading={isLoading} />,
-            error
-              ? <ErrorMessage error={error} />
-              : (
-                <div className={styles["container"]}>
-                  <CollapsibleGroup>
-                    {users.map(user => ({
-                      title: user.name,
-                      content: <UserInfo key={user.id} user={user} />
-                    }))}
-                  </CollapsibleGroup>
-                </div>
-              )
+            <Loader isLoading={isLoading} key="loader" />,
+            error ? (
+              <ErrorMessage error={error} key="error-message" />
+            ) : (
+              <div className={styles["container"]} key="container">
+                <CollapsibleGroup key="collapsible">
+                  {users.map(user => ({
+                    title: user.name,
+                    content: <UserInfo key={user.id} user={user} />
+                  }))}
+                </CollapsibleGroup>
+              </div>
+            )
           ]
         }}
       </Page>

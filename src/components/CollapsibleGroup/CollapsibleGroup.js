@@ -1,10 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 import Collapsible from "../Collapsible/Collapsible";
 import styles from "./styles.css";
-
-// todo: make accordion behaviour
 
 const CollapsibleGroup = ({ children }) =>
   children.length > 0 && (
@@ -19,4 +17,4 @@ const CollapsibleGroup = ({ children }) =>
 
 Collapsible.propTypes = {};
 
-export default CollapsibleGroup
+export default CollapsibleGroup;

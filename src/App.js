@@ -13,8 +13,6 @@ import CollapsiblePage from "./pages/CollapsiblePage/index";
 import FetchDataPage from "./pages/FetchDataPage/index";
 import CurrencyConverterPage from "./pages/CurrencyConverterPage";
 
-import styles from "./App.css";
-
 const App = () => (
   <Router>
     <header>
@@ -29,7 +27,7 @@ const App = () => (
         <Route render={() => <p>Page Not Found</p>} />
       </Switch>
     </main>
-  </Router >
+  </Router>
 );
 
 export default App;
